@@ -13,7 +13,7 @@ const ApplicationForm = () => {
   const { toast } = useToast();
 
   // Discord webhook URL - replace with your actual webhook URL
-  const DISCORD_WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+  const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1376200566971170999/it_7aTbzFDya5O0sRNFzMGlyi36nV9KiN9Bj93qxlTluIIVC2YAcUos0j6ACx7822KYp';
 
   const [formData, setFormData] = useState({
     discordUsername: '',
