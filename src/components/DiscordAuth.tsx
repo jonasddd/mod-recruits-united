@@ -71,7 +71,7 @@ export default async function handler(req, res) {
   params.append('client_secret', process.env.DISCORD_CLIENT_SECRET!);
   params.append('grant_type', 'authorization_code');
   params.append('code', code);
-  params.append('redirect_uri', 'https://neverland-mod.vercel.app/auth/discord');
+  params.append('redirect_uri', 'https://neverlandmodappli.vercel.app/');
   params.append('scope', 'identify email');
 
   try {
@@ -97,8 +97,8 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: 'OAuth failed' });
     const DISCORD_CLIENT_ID = '1375104763917504633';
-const REDIRECT_URI = encodeURIComponent('https://neverland-mod.vercel.app/auth/discord'); // Deine eigene Callback-URL
-const DISCORD_OAUTH_URL = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&scope=identify%20email`;
+const REDIRECT_URI = encodeURIComponent('https://neverlandmodappli.vercel.app/'); // Deine eigene Callback-URL
+const DISCORD_OAUTH_URL = `https://discord.com/oauth2/authorize?client_id=1374434422924771378&response_type=code&redirect_uri=https%3A%2F%2Fneverlandmodappli.vercel.app%2F&scope=identify+guilds+email+connections`;
 
 export default function DiscordAuth() {
   const handleLogin = () => {
