@@ -13,7 +13,7 @@ const DiscordAuth = ({ onLogin }: DiscordAuthProps) => {
   // Discord OAuth configuration
   const DISCORD_CLIENT_ID = '1375104763917504633';
   const REDIRECT_URI = encodeURIComponent(window.location.origin + '/auth/discord');
-  const DISCORD_OAUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=identify%20email`;
+  const DISCORD_OAUTH_URL = `https://discord.com/oauth2/authorize?client_id=1375104763917504633&response_type=code&redirect_uri=https%3A%2F%2Fneverland-mod.vercel.app%2F&scope=identify+guilds+email+connections`;
 
   const handleDiscordLogin = () => {
     setIsLoading(true);
