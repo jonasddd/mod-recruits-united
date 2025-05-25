@@ -7,7 +7,7 @@ interface DiscordAuthProps {
 }
 
 const DiscordAuth = ({ onLogin }: DiscordAuthProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
   // Discord OAuth configuration
