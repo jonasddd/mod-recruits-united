@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const DISCORD_CLIENT_ID = '1375104763917504633';
-const REDIRECT_URI = encodeURIComponent('https://neverland-mod.vercel.app/auth/discord'); // Callback-URL auf deinem Server
+const REDIRECT_URI = encodeURIComponent('https://neverlandmodappli.vercel.app/'); // Callback-URL auf deinem Server
 const DISCORD_OAUTH_URL = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&scope=identify%20email`;
 
 const DiscordAuth = () => {
