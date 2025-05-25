@@ -11,7 +11,7 @@ const DiscordAuth = ({ onLogin }: DiscordAuthProps) => {
   const { toast } = useToast();
 
   // Discord OAuth configuration
-  const DISCORD_CLIENT_ID = 'YOUR_DISCORD_CLIENT_ID_HERE';
+  const DISCORD_CLIENT_ID = '1375104763917504633';
   const REDIRECT_URI = encodeURIComponent(window.location.origin + '/auth/discord');
   const DISCORD_OAUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=identify%20email`;
 
