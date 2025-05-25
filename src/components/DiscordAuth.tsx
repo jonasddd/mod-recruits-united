@@ -96,6 +96,26 @@ export default async function handler(req, res) {
     res.status(200).json(userData);
   } catch (error) {
     res.status(500).json({ error: 'OAuth failed' });
-  }
+    const DISCORD_CLIENT_ID = '1375104763917504633';
+const REDIRECT_URI = encodeURIComponent('https://neverland-mod.vercel.app/auth/discord'); // Deine eigene Callback-URL
+const DISCORD_OAUTH_URL = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&scope=identify%20email`;
+
+export default function DiscordAuth() {
+  const handleLogin = () => {
+    window.location.href = DISCORD_OAUTH_URL;
+  };
+
+  return (
+    <div className="text-center mt-10">
+      <h2 className="text-xl font-bold mb-4">Login mit Discord</h2>
+      <button
+        onClick={handleLogin}
+        className="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700"
+      >
+        Discord Login
+      </button>
+    </div>
+  );
 }
+
 
