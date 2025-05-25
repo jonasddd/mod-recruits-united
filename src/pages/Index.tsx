@@ -6,7 +6,6 @@ import MissionSection from '../components/MissionSection';
 import ProcessSection from '../components/ProcessSection';
 import ApplicationForm from '../components/ApplicationForm';
 import FAQSection from '../components/FAQSection';
-import TestimonialsSection from '../components/TestimonialsSection';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -32,7 +31,6 @@ const Index = () => {
         <ProcessSection />
         <ApplicationForm />
         <FAQSection />
-        <TestimonialsSection />
       </main>
       
       <Footer />
