@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Send, User, Clock, Award, MessageSquare } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
@@ -38,6 +37,36 @@ const ApplicationForm = () => {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  // Check for Discord login status on component mount
+  useEffect(() => {
+    const checkDiscordLogin = () => {
+      const isLoggedInStored = localStorage.getItem('isDiscordLoggedIn');
+      const userData = localStorage.getItem('discordUser');
+
+      if (isLoggedInStored === 'true' && userData) {
+        try {
+          const parsedUserData = JSON.parse(userData);
+          setIsLoggedIn(true);
+          setDiscordUser(parsedUserData);
+          setFormData(prev => ({
+            ...prev,
+            discordUsername: `${parsedUserData.username}#${parsedUserData.discriminator}`
+          }));
+        } catch (error) {
+          console.error('Failed to parse stored Discord user data:', error);
+          localStorage.removeItem('isDiscordLoggedIn');
+          localStorage.removeItem('discordUser');
+        }
+      }
+    };
+
+    checkDiscordLogin();
+
+    // Listen for storage changes (e.g., login in another tab)
+    window.addEventListener('storage', checkDiscordLogin);
+    return () => window.removeEventListener('storage', checkDiscordLogin);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -155,6 +184,8 @@ const ApplicationForm = () => {
       ...prev,
       discordUsername: `${userData.username}#${userData.discriminator}`
     }));
+    localStorage.setItem('isDiscordLoggedIn', 'true');
+    localStorage.setItem('discordUser', JSON.stringify(userData));
   };
 
   const handleDiscordLogout = () => {
@@ -164,6 +195,13 @@ const ApplicationForm = () => {
       ...prev,
       discordUsername: ''
     }));
+    localStorage.removeItem('isDiscordLoggedIn');
+    localStorage.removeItem('discordUser');
+    
+    toast({
+      title: "Logged Out",
+      description: "You have been logged out of Discord.",
+    });
   };
 
   return (
